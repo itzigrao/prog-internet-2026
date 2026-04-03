@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-br">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -10,77 +10,47 @@
 <body>
 
     <header>
-        <h1> Make it right, tell us what you need!</h1>
+        <h1> Work smart not hard, tell us what you need!</h1>
         <p> Entre em contato com nossos executivos abaixo</p>
     </header>
     <div class="container">
-    <nav>
+        <nav>
             <ul>
                 <li><a href="index.html">Home</a></li>
                 <li><a href="sobre.html">Sobre</a></li>
                 <li><a href="contato.html">Contato</a></li>
             </ul>
         </nav>
-    <main>
-        <section>
-            <h2> Eric Ries CEO</h2>
-            <nav>
-                
-                    
-                        <a href="https://vivo.com.br/para-voce?gclsrc=aw.ds&gad_source=1&gad_campaignid=1712627678&gbraid=0AAAAADSS1s374H3i2KmMIuZQFY28us0FW&gclid=EAIaIQobChMIm4SMoputkwMVgEVIAB0f8h92EAAYASAAEgLmFfD_BwE" target="_blank">(3) 12927364-927</a>
-                    
-                
-            </nav>
-        </section>
-        <section class="cards1">
-            <h2>Contato de outros executivos:</h2>
-        </section>
-        <section class="cards1">
-            
-            <div class="card">
-                <h3>CFO</h3>
-                <nav>
-                <ul>
-                    <li><a href="https://vivo.com.br/para-voce?gclsrc=aw.ds&gad_source=1&gad_campaignid=1712627678&gbraid=0AAAAADSS1s374H3i2KmMIuZQFY28us0FW&gclid=EAIaIQobChMIm4SMoputkwMVgEVIAB0f8h92EAAYASAAEgLmFfD_BwE" target="_blank">(99)234567-2</a></li>
-                </ul>
-                </nav>
-            </div>
-            <div class="card">
-                <h3>COO</h3>
-                <nav>
-                <ul>
-                    <li><a href="https://vivo.com.br/para-voce?gclsrc=aw.ds&gad_source=1&gad_campaignid=1712627678&gbraid=0AAAAADSS1s374H3i2KmMIuZQFY28us0FW&gclid=EAIaIQobChMIm4SMoputkwMVgEVIAB0f8h92EAAYASAAEgLmFfD_BwE" target="_blank">(55)222222-22211</a></li>
-                </ul>
-                </nav>
-            </div>
-            <div class="card">
-                <h3>CSO</h3>
-                <nav>
-                <ul>
-                    <li><a href="https://vivo.com.br/para-voce?gclsrc=aw.ds&gad_source=1&gad_campaignid=1712627678&gbraid=0AAAAADSS1s374H3i2KmMIuZQFY28us0FW&gclid=EAIaIQobChMIm4SMoputkwMVgEVIAB0f8h92EAAYASAAEgLmFfD_BwE" target="_blank">(01)999999-11111</a></li>
-                </ul>
-                </nav>
-            </div>
-        </section>
-    </main>
-    <section>
-    <form>
-        <h3> Envie uma Mensagem:</h3>
+    </div>
+    <form class="form-contato">
+        <h2> Formulário de Contato</h2>
 
-        <label for="name">Nome: </label>
-        <input type="text" id="name" name="name" required><br><br>
+        <label for="nome">Nome: </label>
+        <input type="text" id="nome" required minlength="3" placeholder="Digite seu nome">
 
         <label for="email">Email: </label>
-        <input type="email" id="email" name="email" required><br><br>
+        <input type="email" id="email" required placeholder="Exemplo@email.com">
 
+        <label for="telefone">Telefone: </label>
+        <input type="tel" id="telefone" pattern="[0-9] {10,11}" placeholder="Somente números">
+
+        <label for="assunto">Assunto: </label>
+        <select id="assunto">
+            <option value="">Selecione</option>
+            <option value="duvida">Dúvida</option>
+            <option value="sugestao">Sugestão</option>
+            <option value="contato">Contato</option>
+
+        </select>
+        
         <label for="message">Mensagem: </label>
-        <textarea name="message" id="message" rows="4" cols="50" required></textarea><br><br>
+        <textarea id="message" rows="4" required></textarea>
 
-        <input type="submit" value="enviar">
+        <button type="submit">Enviar</button>
 
     </form>
-    </section>
-    </div>
+    
+    
     
 </body>
 <footer>
