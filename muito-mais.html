@@ -28,12 +28,123 @@
         <section id="status-agentes">
             <h2>Status da Fábrica</h2>
             <!-- Aqui colocaremos os "cards" mostrando o que as IAs estão fazendo agora -->
+             <!-- Seção A: O painel de status dos Agentes IA -->
+        <section id="status-agentes">
+            
+            <header class="secao-cabecalho">
+                <h2>Painel de Controle das IAs</h2>
+                <p>Monitoramento em tempo real do processamento de dados e geração de negócios.</p>
+            </header>
+
+            <!-- Um container que vai segurar os 3 cards lado a lado futuramente com CSS -->
+            <div class="container-cards-agentes">
+
+                <!-- CARD 1: O Rastreador -->
+                <article class="card-agente">
+                    <div class="agente-header">
+                        <!-- Essa classe 'status-online' servirá para fazermos uma bolinha verde piscando no CSS depois -->
+                        <span class="indicador status-online">🟢 Online</span>
+                        <h3>Agente 1: O Rastreador</h3>
+                    </div>
+                    <div class="agente-corpo">
+                        <p><strong>Função:</strong> Varredura de Big Data e detecção de dores locais.</p>
+                        <p><strong>Ação Atual:</strong> Analisando avaliações de turistas no litoral de Santa Catarina.</p>
+                        <ul class="agente-metricas">
+                            <li><strong>Dados processados (24h):</strong> 1.450.320 registros</li>
+                            <li><strong>Novos Insights:</strong> 34 encontrados</li>
+                        </ul>
+                    </div>
+                </article>
+
+                <!-- CARD 2: O Estrategista -->
+                <article class="card-agente">
+                    <div class="agente-header">
+                        <span class="indicador status-processando">🟡 Calculando</span>
+                        <h3>Agente 2: O Estrategista</h3>
+                    </div>
+                    <div class="agente-corpo">
+                        <p><strong>Função:</strong> Estruturação de Business Plan e Valuation.</p>
+                        <p><strong>Ação Atual:</strong> Projetando fluxo de caixa para projeto de Clínica de Recuperação Física (Gelo/Calor).</p>
+                        <ul class="agente-metricas">
+                            <li><strong>Projetos na Fila:</strong> 12</li>
+                            <li><strong>Tempo estimado:</strong> 4 minutos</li>
+                        </ul>
+                    </div>
+                </article>
+
+                <!-- CARD 3: O Validador -->
+                <article class="card-agente">
+                    <div class="agente-header">
+                        <span class="indicador status-ocioso">⚪ Aguardando</span>
+                        <h3>Agente 3: O Validador</h3>
+                    </div>
+                    <div class="agente-corpo">
+                        <p><strong>Função:</strong> Geração de Landing Pages e Testes de Conversão (A/B).</p>
+                        <p><strong>Ação Atual:</strong> Ocioso. Aguardando finalização do relatório do Agente 2.</p>
+                        <ul class="agente-metricas">
+                            <li><strong>Ideias validadas este mês:</strong> 8</li>
+                            <li><strong>Taxa de Acerto:</strong> 87%</li>
+                        </ul>
+                    </div>
+                </article>
+
+            </div>
+        </section>
         </section>
 
         <!-- Seção B: O Feed de Inovação (Ideias validadas) -->
         <section id="feed-oportunidades">
             <h2>Últimas Oportunidades Geradas</h2>
             <!-- Aqui listaremos os projetos físicos e digitais disponíveis para compra -->
+             <!-- Seção B: O Feed de Inovação (Ideias validadas) -->
+        <section id="feed-oportunidades">
+            
+            <header class="secao-cabecalho">
+                <h2>Prateleira de IPs (Projetos Validados)</h2>
+                <p>Oportunidades de negócios estruturadas, precificadas e prontas para execução imediata.</p>
+            </header>
+
+            <!-- Container para alinhar os projetos (como uma vitrine) -->
+            <div class="container-cards-projetos">
+                
+                <!-- PROJETO FÍSICO -->
+                <article class="card-projeto projeto-fisico">
+                    <div class="projeto-tags">
+                        <span class="tag-tipo">🏢 Negócio Físico</span>
+                        <span class="tag-setor">Saúde & Bem-Estar</span>
+                    </div>
+                    <h3>Clube de Recuperação Física e Mental (Gelo/Calor)</h3>
+                    <p class="projeto-local">📍 <strong>Foco Regional:</strong> Litoral de SC (Garopaba e região)</p>
+                    <p class="projeto-resumo">Centro focado em atletas de alta performance e turismo de bem-estar, unindo crioterapia e saunas.</p>
+                    
+                    <div class="projeto-financeiro">
+                        <p><strong>Investimento Inicial:</strong> R$ 350.000</p>
+                        <p><strong>Valuation (Ano 3):</strong> R$ 2.100.000</p>
+                        <p><strong>Nível de Risco:</strong> Médio-Baixo</p>
+                    </div>
+                    <button class="btn-comprar">Adquirir Business Plan Completo</button>
+                </article>
+
+                <!-- PROJETO DIGITAL -->
+                <article class="card-projeto projeto-digital">
+                    <div class="projeto-tags">
+                        <span class="tag-tipo">💻 Software (SaaS)</span>
+                        <span class="tag-setor">Turismo B2B</span>
+                    </div>
+                    <h3>Motor de Precificação Dinâmica para Pousadas</h3>
+                    <p class="projeto-local">📍 <strong>Foco:</strong> Escalabilidade Nacional</p>
+                    <p class="projeto-resumo">Software que cruza dados de clima, demanda turística e concorrência para ajustar o preço das diárias automaticamente.</p>
+                    
+                    <div class="projeto-financeiro">
+                        <p><strong>Investimento Inicial:</strong> R$ 85.000 (Desenvolvimento)</p>
+                        <p><strong>Valuation (Ano 3):</strong> R$ 6.500.000</p>
+                        <p><strong>Teste A/B:</strong> 14% de intenção de compra validada.</p>
+                    </div>
+                    <button class="btn-comprar">Adquirir Código-Fonte e IP</button>
+                </article>
+
+            </div>
+        </section>
         </section>
 
     </main>

@@ -1,0 +1,194 @@
+/* =========================================
+   1. RESET E VARIÁVEIS (A Fundação)
+   ========================================= */
+/* O seletor '*' aplica a regra em todos os elementos da página */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+}
+
+/* Criando variáveis de cores para facilitar a manutenção */
+:root {
+    --fundo-principal: #0d1117; /* Quase preto */
+    --fundo-secundario: #161b22; /* Cinza bem escuro para os cards */
+    --texto-claro: #c9d1d9;
+    --texto-titulo: #ffffff;
+    --cor-destaque: #2f81f7; /* Azul tech */
+    --cor-online: #2ea043; /* Verde para IAs ativas */
+    --cor-processando: #d29922; /* Amarelo */
+    --cor-ocioso: #8b949e; /* Cinza */
+}
+
+/* =========================================
+   2. CORPO DA PÁGINA (Body)
+   ========================================= */
+body {
+    background-color: var(--fundo-principal);
+    color: var(--texto-claro);
+    line-height: 1.6;
+}
+
+/* =========================================
+   3. CABEÇALHO (Header)
+   ========================================= */
+header {
+    background-color: var(--fundo-secundario);
+    padding: 20px 50px;
+    display: flex; /* Coloca os elementos lado a lado */
+    justify-content: space-between; /* Joga a logo para a esquerda e o menu para a direita */
+    align-items: center; /* Centraliza na vertical */
+    border-bottom: 1px solid #30363d; /* Linha sutil separando o topo */
+}
+
+.logo {
+    font-size: 24px;
+    font-weight: bold;
+    color: var(--texto-titulo);
+    letter-spacing: 2px;
+}
+
+nav ul {
+    list-style: none; /* Tira as bolinhas da lista */
+    display: flex;
+    gap: 30px; /* Espaçamento entre os links */
+    align-items: center;
+}
+
+nav a {
+    text-decoration: none; /* Tira o sublinhado do link */
+    color: var(--texto-claro);
+    font-weight: 500;
+    transition: color 0.3s ease; /* Efeito suave ao passar o mouse */
+}
+
+nav a:hover {
+    color: var(--cor-destaque);
+}
+
+/* Botão Especial do Oráculo */
+.botao-destaque {
+    background-color: var(--cor-destaque);
+    color: #fff;
+    padding: 10px 20px;
+    border-radius: 5px;
+    font-weight: bold;
+}
+
+.botao-destaque:hover {
+    background-color: #1f6feb; /* Azul um pouco mais escuro no hover */
+    color: #fff;
+}
+
+/* Espaçamento geral das seções */
+section {
+    padding: 60px 50px;
+}
+
+.secao-cabecalho {
+    margin-bottom: 40px;
+}
+
+.secao-cabecalho h2 {
+    color: var(--texto-titulo);
+    font-size: 28px;
+    margin-bottom: 10px;
+}
+
+/* =========================================
+   4. PAINEL DE AGENTES (Layout e Cards)
+   ========================================= */
+
+/* Contentor que coloca os 3 agentes lado a lado */
+.container-cards-agentes {
+    display: flex;
+    gap: 20px;
+    flex-wrap: wrap; /* Garante que os cards quebram a linha em ecrãs pequenos */
+    justify-content: space-between;
+}
+
+/* Estilização individual de cada Card */
+.card-agente {
+    background-color: var(--fundo-secundario);
+    border: 1px solid #30363d;
+    border-radius: 8px;
+    padding: 24px;
+    flex: 1; /* Faz com que todos os cards tenham a mesma largura */
+    min-width: 300px;
+    transition: transform 0.3s ease, border-color 0.3s ease;
+}
+
+/* Efeito ao passar o rato: o card levanta ligeiramente */
+.card-agente:hover {
+    transform: translateY(-5px);
+    border-color: var(--cor-destaque);
+}
+
+/* Cabeçalho interno do Card */
+.agente-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+    border-bottom: 1px solid #30363d;
+    padding-bottom: 10px;
+}
+
+.agente-header h3 {
+    font-size: 18px;
+    color: var(--texto-titulo);
+}
+
+/* Estilo dos indicadores de Status */
+.indicador {
+    font-size: 12px;
+    font-weight: bold;
+    text-transform: uppercase;
+    padding: 4px 8px;
+    border-radius: 4px;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+}
+
+.status-online { color: var(--cor-online); }
+.status-processando { color: var(--cor-processando); }
+.status-ocioso { color: var(--cor-ocioso); }
+
+/* Animação de Pulsação para o Agente Online */
+@keyframes pulse {
+    0% { opacity: 1; }
+    50% { opacity: 0.4; }
+    100% { opacity: 1; }
+}
+
+.status-online::before {
+    content: "●";
+    animation: pulse 1.5s infinite;
+}
+
+/* Conteúdo e Métricas */
+.agente-corpo p {
+    font-size: 14px;
+    margin-bottom: 15px;
+    color: var(--texto-claro);
+}
+
+.agente-metricas {
+    list-style: none;
+    background-color: rgba(0, 0, 0, 0.2);
+    padding: 15px;
+    border-radius: 6px;
+}
+
+.agente-metricas li {
+    font-size: 13px;
+    margin-bottom: 8px;
+    border-left: 2px solid var(--cor-destaque);
+    padding-left: 10px;
+}
+
+.agente-metricas li:last-child {
+    margin-bottom: 0;
+}
