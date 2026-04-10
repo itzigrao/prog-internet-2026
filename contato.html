@@ -29,10 +29,10 @@
         <input type="text" id="nome" required minlength="3" placeholder="Digite seu nome">
 
         <label for="email">Email: </label>
-        <input type="email" id="email" required placeholder="Exemplo@email.com">
+        <input type="email" id="email" >
 
         <label for="telefone">Telefone: </label>
-        <input type="tel" id="telefone" pattern="[0-9] {10,11}" placeholder="Somente números">
+        <input type="tel"  id="telefone" pattern="[0-9]{10,11}" placeholder="Somente números">
 
         <label for="assunto">Assunto: </label>
         <select id="assunto">
@@ -47,12 +47,18 @@
         <textarea id="message" rows="4" required></textarea>
 
         <button type="submit">Enviar</button>
-        <button type="button" onclick="document.getElementById('nome').value = 'HELLO JAVA SCRIPT'">Click Me</button>
+        <!-- <button type="button" onclick="document.getElementById('nome').value = 'HELLO JAVA SCRIPT'">Click Me</button> -->
+        <input type="submit" value="Enviar">
 
+        <button id="btnAlerta">Exibir Alerta</button>
+        <button id="btnCor">Mudar Cor</button>
+        <button id="btnConteudo">Mudar conteúdo</button>
+        <p id="conteudo">Conteúdo original</p>
+        </button>
     </form>
     
     
-    
+    <script src="assets/js/script.js"></script>
 </body>
 <footer>
     <nav>
