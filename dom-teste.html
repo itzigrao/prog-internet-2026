@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1 id="titulo">Título</h1>
+    <button onclick="mudartexto()">Clique aqui</button>
+
+    <ul id="minhaLista"></ul>
+    <button id="add">Adicionar item</button>
+
+    <h2 id="contador">0</h2>
+    <button id="btnSoma">Contar +1</button>
+
+    <input type="number" id="palpite" placeholder="0 a 10">
+    <button id="btnChutar">Chutar!</button>
+    <p id="feedback"></p>
+
+    <img id='lampada' src="/assets/img/lampada.png" style="width:100px;">
+    <button id="btnInterruptor">Ligar/Desligar</button>
+
+    <p>Erros: <span id="contadorErros">0</span></p>
+    <button id="fugitivo" style="position: absolute; left: 50%; top: 50%;">
+        Pegue-me!
+    </button>
+
+
+    <script>
+        const lista = document.getElementById('minhaLista');
+        const botao = document.getElementById('add');
+
+        let valor = 0;
+        const display = document.getElementById("contador");
+        const interruptor = document.getElementById('btnSoma');
+
+        const img = document.getElementById('lampada');
+        let acesa = false; // variável para controlar o estado da lâmpada`
+        const btnInterruptor = document.getElementById('btnInterruptor');
+        
+        const segredo = Math.floor(Math.random() * 11);
+        const campo = document.getElementById("palpite");
+        const texto = document.getElementById("feedback");
+        const btnChutar = document.getElementById("btnChutar");
+
+        const btn = document.getElementById('fugitivo');
+        const placar = document.getElementById('contadorErros');
+        let erros = 0;
+
+        btn.addEventListener('mousehover', () => {
+            erros++;
+            placar.innerText = erros;
+            // Gera uma posição aleatória para o botão dentro da janela
+            const x = Math.random() * (window.innerWidth - 100);// subtrai 100 para evitar que o botão fique parcialmente fora da tela
+            const y = Math.random() * (window.innerHeight - 50);// subtrai 50 para evitar que o botão fique parcialmente fora da tela
+
+            btn.style.left = `${x}px`;
+            btn.style.top = `${y}px`;
+        });
+
+        btn.addEventListener('click', () => alert('Voce me pegou!'));
+
+        btnChutar.addEventListener('click', () => {
+            const chute = Number (campo.value);
+            if (chute === segredo) {
+                texto.innerText = 'Parabéns, você acertou!';
+                texto.style.color = 'green';
+            } else {
+                texto.innerText =  chute > segredo ? 'Tente mais baixo!' : 'Tente mais alto!';
+                texto.style.color = 'red';
+            }
+        });
+
+        btnInterruptor.addEventListener('click', () => { // adiciona um ouvinte de evento de clique ao botão de interruptor
+            acesa = !acesa; // inverte o estado da lâmpada (acesa para apagada e vice-versa), teste de valor booleano
+            img.src = acesa ? '/assets/img/lampada.png' : '/assets/img/lampada_apagada.png'; // atualiza a imagem da lâmpada com base no estado
+        });
+
+        interruptor.addEventListener('click', () => {
+            valor ++; // incrementa o valor da variável "valor" em 1
+            display.innerText = valor; // atualiza o texto do elemento "display" para mostrar o novo valor
+        }); // adiciona um ouvinte de evento de clique ao botão de contagem
+
+        botao.addEventListener('click', () => {// adiciona um ouvinte de evento de clique ao botão
+        
+    //      1. criar o elemento
+            const novoItem = document.createElement("li");
+                // 2. Dar conteúdo ao elemento
+            novoItem.innerText = "Novo Item na Lista";
+            // 3. Adicionar na página
+            lista.appendChild(novoItem);
+    });
+
+        function mudartexto() { //função para mudar o texto do título
+            const titulo = document.getElementById('titulo');
+            titulo.innerText = 'Java script';// muda o texto do título para "Java script"
+            titulo.style.color = 'blue'; // muda a cor do título para azul
+
+        }
+    </script>
+    
+</body>
+</html>
