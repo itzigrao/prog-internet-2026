@@ -4,31 +4,80 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    <style>
+        body { 
+            font-family: sans-serif;
+            padding: 20px;
+            background-color: #f4f4f9;
+             }
+        .box {
+            background: white;
+            padding: 15px;
+            border-radius: 8px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+            margin-bottom: 20px;
+                 }
+        h2 {
+            color: #003366;
+            border-bottom: 2px solid #003366; padding-bottom: 5px;
+             }
+        #fugitivo { 
+            position: absolute; transition: all 0.1s;
+         }
+        .lamp-container { 
+            text-align: center;
+         }
+        img { 
+            width: 150px; display: block; margin: 10px auto; 
+        }
+    </style>
 </head>
 <body>
-    <h1 id="titulo">Título</h1>
-    <button onclick="mudartexto()">Clique aqui</button>
+    <div class="box">
+        <h1 id="titulo">Título</h1>
+        <button onclick="mudartexto()">Clique aqui</button>
+    </div>
 
-    <ul id="minhaLista"></ul>
-    <button id="add">Adicionar item</button>
+    <div class="box">
+        <ul id="minhaLista"></ul>
+        <button id="add">Adicionar item</button>
+    </div>
 
-    <h2 id="contador">0</h2>
-    <button id="btnSoma">Contar +1</button>
+    <div class="box">
+        <h2 id="contador">0</h2>
+        <button id="btnSoma">Contar +1</button>
+    </div>
 
-    <input type="number" id="palpite" placeholder="0 a 10">
-    <button id="btnChutar">Chutar!</button>
-    <p id="feedback"></p>
+    <div class="box">
+        <input type="number" id="palpite" placeholder="0 a 10">
+        <button id="btnChutar">Chutar!</button>
+        <p id="feedback"></p>
+    </div>
 
-    <img id='lampada' src="/assets/img/lampada.png" style="width:100px;">
-    <button id="btnInterruptor">Ligar/Desligar</button>
+    <div class="box">
+        <img id='lampada' src="/assets/img/lampada.png" style="width:100px;">
+        <button id="btnInterruptor">Ligar/Desligar</button>
+    </div>
 
-    <p>Erros: <span id="contadorErros">0</span></p>
-    <button id="fugitivo" style="position: absolute; left: 50%; top: 50%;">
-        Pegue-me!
-    </button>
+    <div class="box">
+        <p>Erros: <span id="contadorErros">0</span></p>
+        <button id="fugitivo" style="position: absolute; left: 50%; top: 50%;">
+            Pegue-me!
+        </button>
+    </div>
+
+    <div class="box">
+        <h2>Jogo de Pedra, Papel e Tesoura</h2>
+        <button onclick="jogar('Pedra')">&#9994 Pedra</button>
+        <button onclick="jogar('Papel')">&#128079 Papel</button>
+        <button onclick="jogar('Tesoura')">&#9996 Tesoura</button>
+        <h3 id="resultadoJogo">Escolha um!</h3>
+    </div>
 
 
     <script>
+
+
         const lista = document.getElementById('minhaLista');
         const botao = document.getElementById('add');
 
@@ -49,7 +98,26 @@
         const placar = document.getElementById('contadorErros');
         let erros = 0;
 
-        btn.addEventListener('mousehover', () => {
+        const opcoes = ['Pedra', 'Papel', 'Tesoura'];
+        function jogar(player) {
+            const pc = opcoes[Math.floor(Math.random() * 3)]; // gera uma escolha aleatória para o computador
+            const res = document.getElementById("resultadoJogo");
+        
+            if (player === pc) {
+                res.innerText = 'Empate! Ambos escolheram  ' + pc + '';
+            } else if (
+                (player === 'Pedra' && pc === 'Tesoura') ||
+                (player === 'Papel' && pc === 'Pedra') ||
+                (player === 'Tesoura' && pc === 'Papel')
+            ) {
+                res.innerText = 'Você Ganhou!' + player + ' vence ' + pc + '!';
+            } else {
+                res.innerText = 'Você Perdeu! ' + pc + ' vence ' + player + '!';
+            }
+        }
+
+
+        btn.addEventListener('mouseover', () => {
             erros++;
             placar.innerText = erros;
             // Gera uma posição aleatória para o botão dentro da janela
