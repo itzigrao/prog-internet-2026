@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <style>
+        body { 
+            font-family: sans-serif;
+            padding: 20px;
+            background-color: #f4f4f9;
+             }
+        .box {
+            background: white;
+            padding: 15px;
+            border-radius: 8px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+            margin-bottom: 20px;
+                 }
+        h2 {
+            color: #003366;
+            border-bottom: 2px solid #003366; padding-bottom: 5px;
+             }
+        #fugitivo { 
+            position: absolute; transition: all 0.1s;
+         }
+        .lamp-container { 
+            text-align: center;
+         }
+        img { 
+            width: 150px; display: block; margin: 10px auto; 
+        }
+    </style>
+</head>
+<body>
+
+    <h1> Roteiro 8</h1>
+
+    <div class="box">
+        <h2>1. Oráculo do conselho</h2>
+        <button id="btnConselho"> Pedir conselho</button>
+        <p id="textoConselho"></p>
+    </div>
+
+    <div class="box">
+        <h2>2. Busca por pet</h2>
+        <button id="btnPet"> Buscar pet</button>
+        <img id="imgPet" src="" alt="Pet encontrado aparecerá aqui" style="width: 300px; display:none;">
+    </div>
+
+    <div class="box">
+        <h2>3. Busca Cep</h2>
+        <input type="text" id="inputCep" placeholder="Digite um CEP">
+        <button id="btnBuscarcep">Buscar Cep</button>
+        <p id="resultado"> </p>
+    </div>
+
+    <script>
+        const btnConselho = document.getElementById('btnConselho');
+        const textoConselho = document.getElementById('textoConselho');
+
+        //2. busca pet
+        const btnPet = document.getElementById('btnPet');
+        const imgPet = document.getElementById('imgPet');
+
+        //3. busca Cep
+        const inputCep = document.getElementById('inputCep');
+        const resultado = document.getElementById('resultado');
+        const btnBuscarcep = document.getElementById('btnBuscarcep');
+
+        btnBuscarcep.addEventListener('click', () => {
+            fetch('https://viacep.com.br/ws/' + inputCep.value + '/json/')
+                .then(response => response.json())
+                .then(data => {
+                    if (!data.erro) { // !data.erro significa que o CEP foi encontrado
+                        resultado.textContent = `CEP: ${data.cep}, Rua: ${data.logradouro}, Bairro: ${data.bairro}, Cidade: ${data.localidade}, Estado: ${data.uf}`;
+                    } else {
+                        resultado.textContent = 'CEP não encontrado.';
+                    }
+                })
+                .catch(error => {
+                    console.error('Erro ao buscar CEP:', error);
+                    resultado.textContent = 'Erro ao buscar CEP.';
+                });
+            }
+        );
+
+        btnConselho.addEventListener('click', () => {
+            // Aqui é onde vamos buscar o conselho na "esteira de pedidos" da internet
+            // Para isso, vamos usar a função fetch() para fazer uma requisição a uma API de conselhos
+            fetch('https://api.adviceslip.com/advice')
+                .then(response => response.json()) // Transformar a resposta em JSON
+                .then(data => {
+                    // A resposta da API tem a seguinte estrutura: { slip: { id: 123, advice: "Conselho aqui" } }
+                    const conselho = data.slip.advice; // Extrair o conselho do JSON
+                    textoConselho.textContent = conselho; // Exibir o conselho na página
+                })
+                .catch(error => {
+                    console.error('Erro ao buscar conselho:', error);
+                    textoConselho.textContent = 'Desculpe, não consegui obter um conselho no momento.';
+                });
+        });
+
+        btnPet.addEventListener('click', () => {
+            // Aqui é onde vamos buscar um pet na "esteira de pedidos" da internet
+            // Para isso, vamos usar a função fetch() para fazer uma requisição a uma API de pets
+            fetch('https://api.thedogapi.com/v1/images/search') // Essa API retorna uma imagem aleatória de gato
+                .then(response => response.json()) // Transformar a resposta em JSON
+                .then(data => {
+                    // A resposta da API tem a seguinte estrutura: [{ url: "URL da imagem" }]
+                    const imageUrl = data[0].url; // Extrair o URL da imagem do JSON
+                    imgPet.src = imageUrl; // Exibir a imagem do pet na página
+                    imgPet.style.display = 'block'; // Tornar a imagem visível
+                })
+                .catch(error => {
+                    console.error('Erro ao buscar pet:', error);
+                    imgPet.style.display = 'none'; // Ocultar a imagem se houver erro
+                });
+        });
+        </script>
+</body>
+</html>
